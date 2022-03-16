@@ -1,32 +1,75 @@
-# package_name
+# Projeto: Pacote de Processamento de Imagens
+## Professora do Projeto: Karina Kato
+### Aluno: Omar Cardoso
+### Bootcamp cognizant cloud data engineer- Digital Innovation One
 
-Description. 
-The package image_processing is used to:
-  Processing
-	- Histogeram matching
-	- Structural similarity
-	- Resize images
-  Utils:
-    - 
+#### Tecnologia: Python
+#### Data: 16/03/2022
+-----------------------------------------
+### Descrição
+O pacote "image_processing-test" é usado para:
 
-## Installation
+- Módulo "Processing":
+  - Correspondência de histograma;
+  - Similaridade estrutural;
+  - Redimensionar imagem;
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install package_name
+- Módulo "Utils":
+  - Ler imagem;
+  - Salvar imagem;
+  - Plotar imagem;
+  - Resultado do gráfico;
+  - Plotar histograma;
+---------------------------------------------
+## Passo a passo da configuração para hospedar um pacote em Python no ambiente de testes Test Pypi
+
+- [x] Instalação das últimas versões de "setuptools" e "wheel"
+
+```
+py -m pip install --user --upgrade setuptools wheel
+```
+- [x] Tenha certeza que o diretório no terminal seja o mesmo do arquivo "setup.py"
+
+```
+C:\Users\HP\myprojectwin\image_processing_package> py setup.py sdist bdist_wheel
+```
+
+- [x] Após completar a instalação, verifique se as pastas abaixo foram adicionadas ao projeto:
+  - [x] build;
+  - [x] dist;
+  - [x] image_processing_test.egg-info.
+
+- [x] Basta subir os arquivos, usando o Twine, para o Test Pypi:
+
+```
+py -m twine upload --repository testpypi dist/*
+```
+
+- [x] Após rodar o comando acima no terminal, será pedido para inserir o usuário e senha. Feito isso, o projeto estará hospedado no Test Pypi.hospedá-lo no Pypi diretamente.
+
+----------------------------------------------------
+## Instalação local, após hospedagem no Test Pypi
+
+- [x] Instalação de dependências
+```
+pip install -r requirements.txt
+```
+
+- [x] Instalção do Pacote
+
+Use o gerenciador de pacotes ```pip install -i https://test.pypi.org/simple/ image-processing-test ```para instalar image_processing-test
 
 ```bash
 pip install image_processing
 ```
-
-## Usage
+-------------------------------------------------
+## Como usar em qualquer projeto
 
 ```python
-from image_processing.processing import combination
-
-file1_name.my_function()
+from image-processing-test.processing import combination
+combination.find_difference(image1, image2)
 ```
+<img width="auto" src="https://github.com/OmarCardoso/image_processing_package/blob/master/image-processing-test.png?raw=true">
 
-## Author
-My_name
-
-## License
+## Licença
 [MIT](https://choosealicense.com/licenses/mit/)
